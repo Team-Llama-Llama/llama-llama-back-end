@@ -2,10 +2,9 @@ const modulesModel = require("../models/modules.model")
 
 const viewModules = async (req, res) => {
     try {
-        // const userId = <receive user id through auth>
-        const moduleId = req.body.moduleId;
-        const moduleDataData = await modulesModel.viewModules(moduleId);
-        res.send(moduleDataData);
+        const categoryId = req.params.id;
+        const moduleData = await modulesModel.viewModules(categoryId);
+        res.send(moduleData);
     } catch(err) {
         console.error("Unable to view modules.");
     }
@@ -13,9 +12,9 @@ const viewModules = async (req, res) => {
 
 const addModule = async (req, res) => {
     try {
-        const moduleId = req.params.id;
+        const categoryId = req.params.id;
         const newModule = req.body.newModule;
-        const moduleData = await modulesModel.addModule(moduleId, newModule);
+        const moduleData = await modulesModel.addModule(categoryId, newModule);
         res.send(moduleData);
     } catch (err) {
         console.error("Unable to add module.")
@@ -43,4 +42,4 @@ const deleteModule = async (req, res) => {
     }
 }
 
-module.exports = { viewModules, addModule, editModule, deleteModule}
+module.exports = { viewModules, addModule, editModule, deleteModule }

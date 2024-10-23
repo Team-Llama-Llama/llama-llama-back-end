@@ -24,7 +24,7 @@ const addCategory = async (req, res) => {
 const editCategory = async (req, res) => {
     try {
         const categoryId = req.params.id;
-        const categoryEdit = req.body.categoryEdit
+        const categoryEdit = req.body.categoryEdit;
         const categoryData = await categoriesModel.editCategory(categoryId, categoryEdit);
         res.send(categoryData)
     } catch (err) {
