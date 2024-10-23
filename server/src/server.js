@@ -19,14 +19,14 @@ app.get("/", (req, res) => {
     });
 
 
-app.post("/users", usersController.add) //login page where user signs up and is added
-app.get("/users/:id", usersController.get) //index page
+app.post("/users", usersController.getAll) //login page where user signs up and is added
+app.get("/users/:id", usersController.getIndex) //index page
 
 app.post("/users/:id/paths", pathsController.add) //add a new path
 app.delete("/users/:id/paths/:id", pathsController.delete) //delete a path
 app.patch("/users/:id/paths/:id", pathsController.edit) //edit a path name
 
 app.post("/users/:id/paths/:id/modules", modulesController.add) //add a new module in path
-app.delete("/users/:id/paths/:id/modules", modulesController.delete) //delete a module in path
+app.delete("/users/:id/paths/:id/modules/:id", modulesController.delete) //delete a module in path
 app.patch("/users/:id/paths/:id/modules/:id", modulesController.edit) //edit a module content, note, or code block component
 

@@ -1,7 +1,13 @@
 //initialize below after knex file added to src directory
 
-// const knex = require("../knex.js");
+const knex = require("../knex.js");
 
-// module.exports = {
+class User {
+    constructor() {}
 
-// }
+    static getAll() {
+        return knex.select();
+    }
+}
+
+// export User;
