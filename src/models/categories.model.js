@@ -22,10 +22,10 @@ class Categories {
             })
     }
 
-    static editCategory(categoryId, categoryEdit) {
+    static editCategory(categoryId, categoryEditted) {
         return knex(CATEGORIES_TABLE)
             .where({ id: categoryId })
-            .update({ name: categoryEdit, updated_at: timestamp})
+            .update({ name: categoryEditted, updated_at: timestamp})
     }
 
     static deleteCategory(categoryId) {

@@ -24,8 +24,8 @@ const addCategory = async (req, res) => {
 const editCategory = async (req, res) => {
     try {
         const categoryId = req.params.id;
-        const categoryEdit = req.body.categoryEdit;
-        const categoryData = await categoriesModel.editCategory(categoryId, categoryEdit);
+        const categoryEditted = req.body.categoryEditted;
+        const categoryData = await categoriesModel.editCategory(categoryId, categoryEditted);
         res.send(categoryData)
     } catch (err) {
         console.error("Unable to edit category.")
