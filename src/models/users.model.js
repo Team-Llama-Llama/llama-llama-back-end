@@ -1,16 +1,16 @@
-//initialize below after knex file added to src directory
-
 const knex = require("../knex.js");
 
-class User {
+const USERS_TABLE = "users";
+
+class Users {
     constructor() {}
 
     static addUser(userData) {
         return knex
             .insert(userData)
-            .into("Users")
+            .into(USERS_TABLE)
     }
 
 }
 
-module.exports = { User }
+module.exports = { Users }
