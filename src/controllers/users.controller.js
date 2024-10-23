@@ -5,7 +5,7 @@ const addUser = async (req, res) => {
         const userData = await usersModel.addUser(req.body);
         res.send(userData);
     } catch(err) {
-        console.error("User not able to be added.")
+        console.error("User not able to be added.");
     } 
 }
 
@@ -20,4 +20,4 @@ const addUser = async (req, res) => {
 //     }
 // }
 
-module.exports = { addUser, getIndex }
+module.exports = { addUser }
