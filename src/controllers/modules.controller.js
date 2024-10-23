@@ -1,4 +1,4 @@
-const modulesModel = require("../modules/modules.model")
+const modulesModel = require("../models/modules.model")
 
 module.exports = {
 

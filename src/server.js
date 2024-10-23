@@ -3,7 +3,7 @@ const knex = require('./knex');
 const app = express();
 const cors = require("cors");
 const usersController = require("./controllers/users.controller");
-const pathsController = require("./controllers/paths.controller");
+const categoriesController = require("./controllers/categories.controller");
 const modulesController = require("./controllers/modules.controller");
 
 app.use(express.json());
@@ -19,14 +19,16 @@ app.get("/", (req, res) => {
     });
 
 
-app.post("/users", usersController.getAll) //login page where user signs up and is added
-app.get("/users/:id", usersController.getIndex) //index page
+app.post("/users", usersController.addUser) //login page where user signs up and is added
+// app.get("/users/:usersId", usersController.getIndex) //index page
 
-app.post("/users/:id/paths", pathsController.add) //add a new path
-app.delete("/users/:id/paths/:id", pathsController.delete) //delete a path
-app.patch("/users/:id/paths/:id", pathsController.edit) //edit a path name
+app.get("users/:usersId/categories") //gets all categories for the user 
+app.post("/users/:usersId/categories", categoriesController.add) //add a new category
+app.delete("/users/:usersId/categories/:categoriesId", categoriesController.delete) //delete a category
+app.patch("/users/:usersId/categories/:categoriesId", categoriesController.edit) //edit a category name
 
-app.post("/users/:id/paths/:id/modules", modulesController.add) //add a new module in path
-app.delete("/users/:id/paths/:id/modules/:id", modulesController.delete) //delete a module in path
-app.patch("/users/:id/paths/:id/modules/:id", modulesController.edit) //edit a module content, note, or code block component
+app.get("users/:usersId/categories/:categoriesId/modules") //gets all modules for that category
+app.post("/users/:usersId/categories/:categoriesId/modules", modulesController.add) //add a new module in category
+app.delete("/users/:usersId/categories/:categoriesId/modules/:modulesId", modulesController.delete) //delete a module in category
+app.patch("/users/:usersId/categories/:categoriesId/modules/:modulesId", modulesController.edit) //edit a module content, note, or code block component
 
