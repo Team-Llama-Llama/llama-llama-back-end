@@ -1,4 +1,4 @@
-const TABLE = "Users";
+const TABLE = "users";
 /**
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }

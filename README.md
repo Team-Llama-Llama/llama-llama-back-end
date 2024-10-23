@@ -2,10 +2,13 @@
 
 ## Express server using MVC architecture
 
-STACK
+### STACK
 - Express
 - Knex
 - Postgres
 
 ## Environment
 Use you own .env for setting your local database.
+
+## Database installation
+Use "npm run migrate-latest"
