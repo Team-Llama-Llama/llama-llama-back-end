@@ -8,7 +8,7 @@ class User {
     static addUser(userData) {
         return knex
             .insert(userData)
-            .into("users")
+            .into("Users")
     }
 
 }
