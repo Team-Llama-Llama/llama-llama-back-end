@@ -1,1 +1,2 @@
-# coder-lms-back-end
+## Environment Settings
+Use you own .env settings.
