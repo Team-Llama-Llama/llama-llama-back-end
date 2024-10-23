@@ -2,7 +2,8 @@
   "name": "backend-llama",
   "type": "commonjs",
   "scripts": {
-    "migrate-latest": "knex migrate:latest"
+    "migrate-latest": "knex migrate:latest",
+    "seed": "knex seed:run"
   },
   "dependencies": {
     "cors": "^2.8.5",
