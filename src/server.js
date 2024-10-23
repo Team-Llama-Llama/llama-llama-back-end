@@ -2,9 +2,9 @@ const express = require('express');
 const knex = require('./knex');
 const app = express();
 const cors = require("cors");
-const usersController = require("./users/users.controller");
-const pathsController = require("./paths/paths.controller");
-const modulesController = require("./modules/modules.controller");
+const usersController = require("./controllers/users.controller");
+const pathsController = require("./controllers/paths.controller");
+const modulesController = require("./controllers/modules.controller");
 
 app.use(express.json());
 app.use(cors());
