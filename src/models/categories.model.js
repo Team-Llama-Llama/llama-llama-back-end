@@ -1,7 +1,10 @@
 const knex = require("../knex.js");
 
 const CATEGORIES_TABLE = "categories";
-const timestamp = Date.now();
+
+function timestamp() {
+    return Date.now();
+}
 
 class Categories {
     constructor() {}
@@ -17,15 +20,14 @@ class Categories {
             .insert({
                 user_id: userId,
                 name: newCategory,
-                created_at: timestamp,
-                updated_at: timestamp,
+                created_at: timestamp(),
             })
     }
 
     static editCategory(categoryId, categoryEditted) {
         return knex(CATEGORIES_TABLE)
             .where({ id: categoryId })
-            .update({ name: categoryEditted, updated_at: timestamp})
+            .update({ name: categoryEditted, updated_at: timestamp()})
     }
 
     static deleteCategory(categoryId) {

@@ -1,7 +1,10 @@
 const knex = require("../knex.js");
 
 const MODULES_TABLE = "modules";
-const timestamp = Date.now();
+
+function timestamp() {
+    return Date.now();
+}
 
 class Modules {
     constructor() {}
@@ -18,8 +21,7 @@ class Modules {
                 category_id: categoryId,
                 title: newModule.title,
                 reference_url: newModule.reference_url,
-                created_at: timestamp,
-                updated_at: timestamp,
+                created_at: timestamp(),
             })
     }
 
@@ -31,7 +33,7 @@ class Modules {
                 reference_url: moduleEdit.reference_url,
                 body: moduleEdit.body,
                 solution: moduleEdit.solution,
-                updated_at: timestamp,
+                updated_at: timestamp(),
             })
     }
 
