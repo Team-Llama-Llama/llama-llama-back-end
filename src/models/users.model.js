@@ -5,9 +5,12 @@ const knex = require("../knex.js");
 class User {
     constructor() {}
 
-    static getAll() {
-        return knex.select();
+    static addUser(userData) {
+        return knex
+            .insert(userData)
+            .into("Users")
     }
+
 }
 
-// export User;
+module.exports = { User }
