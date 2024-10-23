@@ -8,7 +8,11 @@ exports.up = function (knex) {
   return knex.schema.createTable(TABLE, function (table) {
     table.increments("id");
     table.integer("category_id").unsigned();
-    table.foreign("category_id").references("id").inTable(CATEGORIES_TABLE);
+    table
+      .foreign("category_id")
+      .references("id")
+      .inTable(CATEGORIES_TABLE)
+      .onDelete("CASCADE");
     table.string("title");
     table.text("body");
     table.string("reference_url");
