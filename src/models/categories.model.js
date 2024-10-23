@@ -1,7 +1,19 @@
-//initialize below after knex file added to src directory
+const knex = require("../knex.js");
 
-// const knex = require("../knex.js");
+class Categories {
+    constructor() {}
 
-// module.exports = {
+    static viewCategories(userId) {
+        return knex("Categories")
+            .select({
+                id: "user_id", 
+                categoryName: "name",
+                createdAt: "created_at",
+                updatedAt: "updated_at",
+            })
+            .where({ id : userId })
+    }
 
-// }
+}
+
+module.exports = { Categories }

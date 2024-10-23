@@ -19,16 +19,16 @@ app.get("/", (req, res) => {
     });
 
 
-app.post("/users", usersController.addUser) //login page where user signs up and is added
+app.post("/login", usersController.addUser) //login page where user signs up and is added
 // app.get("/users/:usersId", usersController.getIndex) //index page
 
-app.get("users/:usersId/categories") //gets all categories for the user 
-app.post("/users/:usersId/categories", categoriesController.add) //add a new category
-app.delete("/users/:usersId/categories/:categoriesId", categoriesController.delete) //delete a category
-app.patch("/users/:usersId/categories/:categoriesId", categoriesController.edit) //edit a category name
+app.get("/categories", categoriesController.viewCategories) //gets all categories for the user 
+app.post("/categories", categoriesController.addCategory) //add a new category
+app.delete("/categories/:id", categoriesController.deleteCategory) //delete a category
+app.patch("/categories/:id", categoriesController.editCategory) //edit a category name
 
-app.get("users/:usersId/categories/:categoriesId/modules") //gets all modules for that category
-app.post("/users/:usersId/categories/:categoriesId/modules", modulesController.add) //add a new module in category
-app.delete("/users/:usersId/categories/:categoriesId/modules/:modulesId", modulesController.delete) //delete a module in category
-app.patch("/users/:usersId/categories/:categoriesId/modules/:modulesId", modulesController.edit) //edit a module content, note, or code block component
+app.get("/categories/:id/modules", modulesController.viewModules) //gets all modules for that category
+app.post("/categories/:id/modules", modulesController.addModule) //add a new module in category
+app.delete("/modules/:id", modulesController.deleteModule) //delete a module in category
+app.patch("/modules/:id", modulesController.editModule) //edit a module content, note, or code block component
 
