@@ -2,6 +2,7 @@
   "name": "backend-llama",
   "type": "commonjs",
   "scripts": {
+    "start": "node ./src/server.js",
     "migrate-latest": "knex migrate:latest",
     "seed": "knex seed:run",
     "set-db": "npm run migrate-latest && npm run seed"
