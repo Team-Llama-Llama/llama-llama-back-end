@@ -1,9 +1,14 @@
+const TABLE = "users";
 /**
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
 exports.up = function (knex) {
-  console.timeLog(process.env);
+  return knex.schema.createTable(TABLE, function (table) {
+    table.increments("id");
+    table.string("username").unique().notNullable();
+    table.string("hashed_password").notNullable();
+  });
 };
 
 /**
