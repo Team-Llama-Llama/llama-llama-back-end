@@ -9,6 +9,12 @@ module.exports = {
       database: process.env.DB_NAME,
       user: process.env.DB_USER,
     },
+    migrations: {
+      directory: "./db/migrations",
+    },
+    seeds: {
+      directory: "./db/seeds",
+    },
   },
   production: {
     client: "pg",
