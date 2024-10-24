@@ -33,8 +33,8 @@ class Modules {
     });
   }
 
-  static deleteCategory(moduleId) {
-    return knex(CATEGORIES_TABLE).where({ id: moduleId }).del();
+  static deleteModule(moduleId) {
+    return knex(MODULES_TABLE).where({ id: moduleId }).del();
   }
 }
 
