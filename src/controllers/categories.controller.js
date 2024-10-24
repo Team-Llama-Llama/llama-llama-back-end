@@ -2,9 +2,9 @@ const categoriesModel = require("../models/categories.model")
 
 const viewCategories = async (req, res) => {
     try {
-        // const userId = <receive user id through auth>
-        const categoryData = await categoriesModel.viewCategories(userId);
-        res.send(categoryData);
+        const userId = 1;
+        const categoryData = await categoriesModel.viewCategory(userId);
+        return res.send(categoryData);
     } catch(err) {
         console.error("Unable to view categories.");
     }
