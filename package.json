@@ -3,10 +3,10 @@
   "type": "commonjs",
   "scripts": {
     "start": "node ./src/server.js",
+    "build": "npm run migrate-latest && npm run seed",
     "dev": "nodemon ./src/server.js",
     "migrate-latest": "knex migrate:latest",
-    "seed": "knex seed:run",
-    "set-db": "npm run migrate-latest && npm run seed"
+    "seed": "knex seed:run"
   },
   "dependencies": {
     "cors": "^2.8.5",
