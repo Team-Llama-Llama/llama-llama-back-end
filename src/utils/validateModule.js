@@ -15,18 +15,18 @@ function validateModule(obj) {
   }
 
   // Validate body
-  if (!obj.body || typeof obj.body !== "string") {
+  if (typeof obj.body !== "string") {
     errors.push('Invalid "body". It must be a string.');
   }
 
   // Validate referenceUrl (if present)
-  if (obj.referenceUrl && typeof obj.referenceUrl !== "string") {
-    errors.push('Invalid "referenceUrl". It must be a string if provided.');
+  if (typeof obj.referenceUrl !== "string") {
+    errors.push('Invalid "referenceUrl". It must be a string.');
   }
 
   // Validate solution (optional)
-  if (obj.solution && typeof obj.solution !== "string") {
-    errors.push('Invalid "solution". It must be a string if provided.');
+  if (typeof obj.solution !== "string") {
+    errors.push('Invalid "solution". It must be a string.');
   }
 
   return errors;
