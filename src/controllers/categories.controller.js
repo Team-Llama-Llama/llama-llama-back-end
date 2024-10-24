@@ -1,5 +1,24 @@
 const categoriesModel = require("../models/categories.model");
 
+// Get Categories per user
+const getCategories = async (req, res) => {
+  try {
+    const { userId } = req.params;
+
+    // Manual validation
+    if (!userId || isNaN(userId)) {
+      return res.status(400).json({ message: "Invalid or missing user ID." });
+    }
+
+    const query = await categoriesModel.viewCategory(userId);
+
+    res.status(200).send(query);
+  } catch (err) {
+    res.status(500).send({
+      message: "Internal error while getting all categories from user",
+    });
+  }
+};
 // Add Category
 const addCategory = async (req, res) => {
   try {
@@ -90,4 +109,4 @@ const deleteCategory = async (req, res) => {
   }
 };
 
-module.exports = { addCategory, editCategory, deleteCategory };
+module.exports = { getCategories, addCategory, editCategory, deleteCategory };

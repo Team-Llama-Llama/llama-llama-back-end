@@ -13,13 +13,14 @@ class Modules {
     return knex(MODULES_TABLE).select("*").where({ category_id: categoryId });
   }
 
+  // Database add timestamps
   static addModule(categoryId, newModule) {
     return knex(MODULES_TABLE).insert({
       category_id: categoryId,
       title: newModule.title,
       body: newModule.body,
       reference_url: newModule.referenceUrl,
-      solution: newModule.body,
+      solution: newModule.solution,
     });
   }
 
@@ -33,8 +34,8 @@ class Modules {
     });
   }
 
-  static deleteCategory(moduleId) {
-    return knex(CATEGORIES_TABLE).where({ id: moduleId }).del();
+  static deleteModule(moduleId) {
+    return knex(MODULES_TABLE).where({ id: moduleId }).del();
   }
 }
 
