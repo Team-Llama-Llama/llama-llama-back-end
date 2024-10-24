@@ -27,11 +27,14 @@ app.get("/", (req, res) => {
 // Auth routes
 // This route needs to return the user_id and the categories data.
 app.post("/login", isValidLogin);
-// Data routes
+
+// This is for categories
+app.get("/users/:userId/categories", categoriesController.getCategories);
 app.post("/users/:userId/categories", categoriesController.addCategory); //add a new category
 app.patch("/categories/:id", categoriesController.editCategory); //edit a category name
 app.delete("/categories/:id", categoriesController.deleteCategory); //delete a category
 
+// This is for the modules
 app.get("/categories/:categoryId/modules", modulesController.viewModules); //gets all modules for that category
 app.post("/categories/:categoryId/modules", modulesController.addModule); //add a new module in category
 app.patch("/modules/:id", modulesController.editModule); //edit a module content, note, or code block component

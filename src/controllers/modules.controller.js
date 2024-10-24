@@ -115,6 +115,7 @@ const deleteModule = async (req, res) => {
         .json({ message: "Module not found or unable to delete." });
     }
   } catch (err) {
+    console.log(err);
     return res.status(500).json({ message: "Internal server error." });
   }
 };
