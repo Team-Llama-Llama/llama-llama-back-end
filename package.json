@@ -3,10 +3,10 @@
   "type": "commonjs",
   "scripts": {
     "start": "node ./src/server.js",
+    "build": "npm run migrate-latest && npm run seed",
     "dev": "nodemon ./src/server.js",
     "migrate-latest": "knex migrate:latest",
-    "seed": "knex seed:run",
-    "set-db": "npm run migrate-latest && npm run seed"
+    "seed": "knex seed:run"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
@@ -17,6 +17,9 @@
     "express-session": "^1.18.1",
     "knex": "^3.1.0",
     "nodemon": "^3.1.7",
-    "pg": "^8.13.0"
+    "pg": "^8.13.0",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
   }
 }
