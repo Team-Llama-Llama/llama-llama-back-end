@@ -28,7 +28,6 @@ app.get("/", (req, res) => {
 // This route needs to return the user_id and the categories data.
 app.post("/login", isValidLogin);
 // Data routes
-app.get("/categories", notImplemented);
 app.post("/users/:userId/categories", categoriesController.addCategory); //add a new category
 app.patch("/categories/:id", categoriesController.editCategory); //edit a category name
 app.delete("/categories/:id", categoriesController.deleteCategory); //delete a category

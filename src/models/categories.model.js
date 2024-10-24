@@ -3,7 +3,7 @@ const knex = require("../knex.js");
 const CATEGORIES_TABLE = "categories";
 
 function timestamp() {
-  return Date.now();
+  return new Date().toISOString();
 }
 
 class Categories {
