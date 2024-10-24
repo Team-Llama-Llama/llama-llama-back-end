@@ -3,14 +3,15 @@ const knex = require("../knex.js");
 const USERS_TABLE = "users";
 
 class Users {
-    constructor() {}
+  constructor() {}
 
-    static addUser(userData) {
-        return knex
-            .insert(userData)
-            .into(USERS_TABLE)
-    }
+  static getUser(username) {
+    return knex("users").where("username", "=", username).first();
+  }
 
+  static addUser(userData) {
+    return knex.insert(userData).into(USERS_TABLE);
+  }
 }
 
-module.exports = { Users }
+module.exports = Users;

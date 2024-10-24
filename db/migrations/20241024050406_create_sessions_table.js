@@ -1,20 +1,15 @@
 const TABLE = "sessions";
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
- */
+
 exports.up = function (knex) {
   return knex.schema.createTable(TABLE, function (table) {
-    table.string("sid").primary();
-    table.json("sess").notNullable();
-    table.timestamp("expire", { precision: 6 }).notNullable();
+    table.string("sid", 255).notNullable().primary(); // 'character varying(255)', primary key
+    table.json("sess").notNullable(); // 'json' column for session data
+    table.timestamp("expired", { useTz: true }).notNullable(); // 'timestamp with time zone'
+
+    table.index(["expired"], "idx_sessions_expired"); // Optional: Index on 'expired' column
   });
 };
 
-/**
- * @param { import("knex").Knex } knex
- * @returns { Promise<void> }
- */
 exports.down = function (knex) {
   return knex.schema.dropTable(TABLE);
 };
