@@ -13,12 +13,12 @@ exports.up = function (knex) {
       .references("id")
       .inTable(CATEGORIES_TABLE)
       .onDelete("CASCADE");
-    table.string("title");
-    table.text("body");
-    table.string("reference_url");
-    table.text("solution");
-    table.timestamp("created_at");
-    table.timestamp("updated_at");
+    table.string("title").defaultTo("");
+    table.text("body").defaultTo("");
+    table.string("reference_url").defaultTo("");
+    table.text("solution").defaultTo("");
+    table.timestamp("created_at").defaultTo(knex.fn.now());
+    table.timestamp("updated_at").defaultTo(knex.fn.now());
   });
 };
 
