@@ -3,6 +3,7 @@
   "type": "commonjs",
   "scripts": {
     "start": "node ./src/server.js",
+    "dev": "nodemon ./src/server.js",
     "migrate-latest": "knex migrate:latest",
     "seed": "knex seed:run",
     "set-db": "npm run migrate-latest && npm run seed"
@@ -14,5 +15,8 @@
     "knex": "^3.1.0",
     "nodemon": "^3.1.7",
     "pg": "^8.13.0"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0"
   }
 }
