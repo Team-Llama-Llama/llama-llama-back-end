@@ -9,7 +9,7 @@ function timestamp() {
 class Categories {
     constructor() {}
 
-    static viewCategories(userId) {
+    static viewCategory(userId) {
         return knex(CATEGORIES_TABLE)
             .select("*")
             .where({ user_id : userId })

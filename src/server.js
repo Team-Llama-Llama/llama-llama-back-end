@@ -22,7 +22,7 @@ app.get("/", (req, res) => {
 app.post("/login", usersController.addUser) //login page where user signs up and is added
 // app.get("/users/:usersId", usersController.getIndex) //index page
 
-app.get("/categories", categoriesController.viewCategories) //gets all categories for the user 
+app.get("/categories", categoriesController.viewCategory) //gets all categories for the user 
 app.post("/categories", categoriesController.addCategory) //add a new category
 app.patch("/categories/:id", categoriesController.editCategory) //edit a category name
 app.delete("/categories/:id", categoriesController.deleteCategory) //delete a category
