@@ -4,7 +4,7 @@ const cors = require("cors");
 const usersController = require("./controllers/users.controller");
 const categoriesController = require("./controllers/categories.controller");
 const modulesController = require("./controllers/modules.controller");
-const { authRequired.  } = require("./auth/index")
+const { authRequired, sessions, loginHandler } = require("./auth/index");
 
 // Config variables
 const PORT = process.env.PORT || 3000;

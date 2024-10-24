@@ -2,7 +2,6 @@ const usersModel = require("../models/users.model");
 
 const addUser = async (req, res) => {
   try {
-    console.log(req.session);
     const userData = await usersModel.addUser(req.body);
     res.send(userData);
   } catch (err) {
