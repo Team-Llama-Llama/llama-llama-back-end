@@ -2,7 +2,7 @@ const categoriesModel = require("../models/categories.model")
 
 const viewCategories = async (req, res) => {
     try {
-        const userId = 1;
+        // const userId = <receive user id through auth>
         const categoryData = await categoriesModel.viewCategory(userId);
         return res.send(categoryData);
     } catch(err) {
@@ -12,11 +12,12 @@ const viewCategories = async (req, res) => {
 
 const addCategory = async (req, res) => {
     try {
-        // const userId = <receive user id through auth>
+        const userId = 1
         const newCategory = req.body.newCategory;
         const categoryData = await categoriesModel.addCategory(userId, newCategory);
         res.send(categoryData);
     } catch (err) {
+        console.log(err);
         console.error("Unable to add category.")
     }
 }
