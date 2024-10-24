@@ -1,9 +1,9 @@
+const TABLE = "sessions";
 /**
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
 exports.up = function (knex) {
-  const TABLE = "sessions";
   return knex.schema.createTable(TABLE, function (table) {
     table.string("sid").primary();
     table.json("sess").notNullable();
