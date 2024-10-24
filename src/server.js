@@ -4,7 +4,12 @@ const cors = require("cors");
 const usersController = require("./controllers/users.controller");
 const categoriesController = require("./controllers/categories.controller");
 const modulesController = require("./controllers/modules.controller");
-const { authRequired, sessions, loginHandler } = require("./auth/index");
+const {
+  authRequired,
+  sessions,
+  loginHandler,
+  logoutHandler,
+} = require("./auth/index");
 const morgan = require("morgan");
 
 // Config variables
@@ -18,6 +23,7 @@ app.use(morgan("dev"));
 
 // Public routes
 app.post("/login", loginHandler);
+app.post("/logout", logoutHandler);
 
 // // All the routes after this middleware will be protected.
 // Private routes
