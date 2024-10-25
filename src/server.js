@@ -29,8 +29,6 @@ app.post("/logout", logoutHandler);
 // Private routes
 app.use(authRequired);
 
-// app.post("/login", usersController.addUser); //login page where user signs up and is added
-// app.get("/users/:usersId", usersController.getIndex) //index page
 // This is for categories
 app.get("/users/:userId/categories", categoriesController.getCategories);
 app.post("/users/:userId/categories", categoriesController.addCategory); //add a new category
