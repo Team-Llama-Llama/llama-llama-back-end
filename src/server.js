@@ -27,7 +27,7 @@ app.post("/logout", logoutHandler);
 
 // // All the routes after this middleware will be protected.
 // Private routes
-app.use(authRequired);
+// app.use(authRequired); // [ ] Solve this! Is not working in auth
 
 // This is for categories
 app.get("/users/:userId/categories", categoriesController.getCategories);
@@ -42,5 +42,5 @@ app.patch("/modules/:id", modulesController.editModule); //edit a module content
 app.delete("/modules/:id", modulesController.deleteModule); //delete a module in category
 
 app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
+  console.log(`Server listening on port http://${IP}:${PORT}`);
 });

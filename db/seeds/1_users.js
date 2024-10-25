@@ -16,8 +16,8 @@ exports.seed = function (knex) {
       // Inserts seed entries
       return knex("users").insert([
         { username: "brian", hashed_password: hash("pass") },
-        { username: "jane_smith", hashed_password: hash("pass") },
-        { username: "alice_jones", hashed_password: hash("pass") },
+        { username: "preston", hashed_password: hash("pass") },
+        { username: "michael", hashed_password: hash("pass") },
         { username: "bob_brown", hashed_password: hash("pass") },
         { username: "charlie_white", hashed_password: hash("pass") },
         { username: "david_black", hashed_password: hash("pass") },

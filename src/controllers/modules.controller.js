@@ -28,7 +28,7 @@ const viewModules = async (req, res) => {
 const addModule = async (req, res) => {
   try {
     const { categoryId } = req.params;
-    const { body } = req;
+    const { title, referenceUrl } = req.body;
 
     // Manual validation
     if (!categoryId || isNaN(categoryId)) {
@@ -37,17 +37,20 @@ const addModule = async (req, res) => {
         .json({ message: "Invalid or missing category ID." });
     }
 
-    // Validate full module object
-    const validationErrors = validateModule(body);
-    if (validationErrors.length > 0) {
-      return res.status(400).json({
-        message: "Object don't have the proper structure.",
-        errors: validationErrors,
+    // Validation properties
+    if (!title || typeof title !== "string") {
+      res
+        .status(400)
+        .send({ message: "Title must be given, and must be an string." });
+    }
+    if (!referenceUrl || typeof referenceUrl !== "string") {
+      res.status(400).send({
+        message: "ReferenceUrl must be given, and must be an string.",
       });
     }
 
     // Call model to add module
-    const query = await modulesModel.addModule(categoryId, body);
+    const query = await modulesModel.addModule(categoryId, title, referenceUrl);
 
     if (query.rowCount === 1) {
       return res.status(201).json({ message: "Module successfully added." });
