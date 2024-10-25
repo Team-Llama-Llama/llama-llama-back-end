@@ -16,14 +16,14 @@ const morgan = require("morgan");
 const PORT = process.env.PORT || 3000;
 
 // Middlewares
-app.use(sessions);
+// app.use(sessions);
 app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"));
 
 // Public routes
-app.post("/login", loginHandler);
-app.post("/logout", logoutHandler);
+// app.post("/login", loginHandler);
+// app.post("/logout", logoutHandler);
 
 // // All the routes after this middleware will be protected.
 // Private routes
@@ -41,6 +41,7 @@ app.post("/categories/:categoryId/modules", modulesController.addModule); //add 
 app.patch("/modules/:id", modulesController.editModule); //edit a module content, note, or code block component
 app.delete("/modules/:id", modulesController.deleteModule); //delete a module in category
 
+const IP = "192.168.10.79";
 app.listen(PORT, () => {
   console.log(`Server listening on port http://${IP}:${PORT}`);
 });

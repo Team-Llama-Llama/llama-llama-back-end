@@ -21,6 +21,7 @@ const getCategories = async (req, res) => {
 };
 // Add Category
 const addCategory = async (req, res) => {
+  console.log("here!");
   try {
     const { userId } = req.params;
     const { name } = req.body;
@@ -39,8 +40,12 @@ const addCategory = async (req, res) => {
     // Call the model to add category
     const query = await categoriesModel.addCategory(userId, name);
 
-    if (query.rowCount === 1) {
-      return res.status(201).json({ message: "Successfully added" });
+    console.log(query);
+
+    if (query.length > 0) {
+      return res
+        .status(201)
+        .json({ message: "Successfully added", data: query[0] });
     } else {
       return res.status(400).json({ message: "Resource cannot be created." });
     }

@@ -53,7 +53,9 @@ const addModule = async (req, res) => {
     const query = await modulesModel.addModule(categoryId, title, referenceUrl);
 
     if (query.rowCount === 1) {
-      return res.status(201).json({ message: "Module successfully added." });
+      return res
+        .status(201)
+        .json({ message: "Module successfully added.", data: null });
     } else {
       return res.status(400).json({ message: "Unable to add module." });
     }
