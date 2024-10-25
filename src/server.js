@@ -1,32 +1,33 @@
-// Imports
 const express = require("express");
-const knex = require("./knex");
+const app = express();
 const cors = require("cors");
-const morgan = require("morgan");
-const { notImplemented } = require("./utils/fn");
-// Controllers
 const usersController = require("./controllers/users.controller");
 const categoriesController = require("./controllers/categories.controller");
 const modulesController = require("./controllers/modules.controller");
-const { isValidLogin } = require("./auth/isValidLogin");
+const {
+  authRequired,
+  sessions,
+  loginHandler,
+  logoutHandler,
+} = require("./auth/index");
+const morgan = require("morgan");
 
-const app = express();
-
-// Variables
+// Config variables
 const PORT = process.env.PORT || 3000;
 
 // Middlewares
+app.use(sessions);
 app.use(express.json());
 app.use(cors());
 app.use(morgan("dev"));
 
-app.get("/", (req, res) => {
-  res.send("Server running");
-});
+// Public routes
+app.post("/login", loginHandler);
+app.post("/logout", logoutHandler);
 
-// Auth routes
-// This route needs to return the user_id and the categories data.
-app.post("/login", isValidLogin);
+// // All the routes after this middleware will be protected.
+// Private routes
+app.use(authRequired);
 
 // This is for categories
 app.get("/users/:userId/categories", categoriesController.getCategories);

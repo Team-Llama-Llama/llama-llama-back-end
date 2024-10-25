@@ -1,13 +1,13 @@
-const usersModel = require("../models/users.model")
+const usersModel = require("../models/users.model");
 
 const addUser = async (req, res) => {
-    try {
-        const userData = await usersModel.addUser(req.body);
-        res.send(userData);
-    } catch(err) {
-        console.error("User not able to be added.");
-    } 
-}
+  try {
+    const userData = await usersModel.addUser(req.body);
+    res.send(userData);
+  } catch (err) {
+    console.error("User not able to be added.");
+  }
+};
 
 // commenting out due to "/users/:usersId" not in use anymore, keeping for reference
 // const getIndex = async (req, res) => {
@@ -20,4 +20,4 @@ const addUser = async (req, res) => {
 //     }
 // }
 
-module.exports = { addUser }
+module.exports = { addUser };
