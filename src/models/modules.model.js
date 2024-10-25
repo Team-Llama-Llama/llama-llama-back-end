@@ -14,13 +14,13 @@ class Modules {
   }
 
   // Database add timestamps
-  static addModule(categoryId, newModule) {
+  static addModule(categoryId, title, referenceUrl) {
     return knex(MODULES_TABLE).insert({
       category_id: categoryId,
-      title: newModule.title,
-      body: newModule.body,
-      reference_url: newModule.referenceUrl,
-      solution: newModule.solution,
+      title: title,
+      body: "",
+      reference_url: referenceUrl,
+      solution: "",
     });
   }
 
