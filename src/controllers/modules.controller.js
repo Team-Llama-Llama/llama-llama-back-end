@@ -12,13 +12,14 @@ const viewModules = async (req, res) => {
     }
 
     // Call model to view modules
+    //PRESTON removed module not found validation to only return query to fix page break issue
     const query = await modulesModel.viewModules(categoryId);
-
-    if (query.length > 0) {
-      return res.status(200).json(query);
-    } else {
-      return res.status(404).json({ message: "Module not found." });
-    }
+    return res.status(200).json(query)
+    // if (query.length > 0) {
+    //   return res.status(200).json(query);
+    // } else {
+    //   return res.status(404).json({ message: "Module not found." });
+    // }
   } catch (err) {
     return res.status(500).json({ message: "Internal server error." });
   }
@@ -76,13 +77,13 @@ const editModule = async (req, res) => {
     }
 
     // Validate full module object
-    const validationErrors = validateModule(moduleData);
-    if (validationErrors.length > 0) {
-      return res.status(400).json({
-        message: "Object don't have the proper structure",
-        errors: validationErrors,
-      });
-    }
+    // const validationErrors = validateModule(moduleData);
+    // if (validationErrors.length > 0) {
+    //   return res.status(400).json({
+    //     message: "Object don't have the proper structure",
+    //     errors: validationErrors,
+    //   });
+    // }
 
     // Call model to edit module
     const query = await modulesModel.editModule(id, moduleData);

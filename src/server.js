@@ -22,8 +22,8 @@ app.use(cors());
 app.use(morgan("dev"));
 
 // Public routes
-// app.post("/login", loginHandler);
-// app.post("/logout", logoutHandler);
+app.post("/login", loginHandler);
+app.post("/logout", logoutHandler);
 
 // // All the routes after this middleware will be protected.
 // Private routes
@@ -41,7 +41,15 @@ app.post("/categories/:categoryId/modules", modulesController.addModule); //add 
 app.patch("/modules/:id", modulesController.editModule); //edit a module content, note, or code block component
 app.delete("/modules/:id", modulesController.deleteModule); //delete a module in category
 
-const IP = "192.168.10.79";
+// const IP = "192.168.10.79";
+// app.listen(PORT, () => {
+//   console.log(`Server listening on port http://${IP}:${PORT}`);
+// });
+
+app.get("/", (req, res) => {
+  res.send("Hello from homepage")
+});
+
 app.listen(PORT, () => {
-  console.log(`Server listening on port http://${IP}:${PORT}`);
+  console.log(`Server listening on ${PORT}`);
 });
