@@ -19,6 +19,7 @@ module.exports = session({
   cookie: { 
     secure: process.env.NODE_ENV === "production" ? true : false, 
     httpOnly: true,
-    maxAge: 3600000 
+    maxAge: 3600000,
+    domain: llama-llama-lms.onrender.com
   },
 });
