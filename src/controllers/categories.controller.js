@@ -21,7 +21,6 @@ const getCategories = async (req, res) => {
 };
 // Add Category
 const addCategory = async (req, res) => {
-  console.log("here!");
   try {
     const { userId } = req.params;
     const { name } = req.body;
@@ -40,8 +39,6 @@ const addCategory = async (req, res) => {
     // Call the model to add category
     const query = await categoriesModel.addCategory(userId, name);
 
-    console.log(query);
-
     if (query.length > 0) {
       return res
         .status(201)
@@ -50,7 +47,6 @@ const addCategory = async (req, res) => {
       return res.status(400).json({ message: "Resource cannot be created." });
     }
   } catch (err) {
-    console.error("Error adding category:", err);
     return res.status(500).json({ message: "Internal server error." });
   }
 };
@@ -84,7 +80,6 @@ const editCategory = async (req, res) => {
       return res.status(400).json({ message: "Resource cannot be updated." });
     }
   } catch (err) {
-    console.log(err);
     return res.status(500).json({ message: "Internal server error." });
   }
 };

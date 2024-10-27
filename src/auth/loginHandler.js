@@ -3,7 +3,6 @@ const categoriesModel = require("../models/categories.model");
 const bcrypt = require("bcrypt");
 
 async function sendApiResponse(req, res) {
-  console.log("Everything ok", req.session.user)
   const userId = req.session.user.id;
   res.send({
     userId,
@@ -13,7 +12,6 @@ async function sendApiResponse(req, res) {
 async function loginHandler(req, res, next) {
   // Is already log in?
   if (req.session.user) {
-    console.log("User detected!")
     return sendApiResponse(req, res);
   }
 
@@ -45,7 +43,6 @@ async function loginHandler(req, res, next) {
     // Append to request to create the session
     // Express will save this into the DB sessions
     if (isMatch) {
-      console.log("storing session...")
       req.session.user = {
         id: user.id,
         username: user.username,

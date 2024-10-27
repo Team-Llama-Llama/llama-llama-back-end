@@ -2,8 +2,6 @@ const categoriesModel = require("../models/categories.model");
 
 async function isValidLogin(req, res) {
   try {
-    // 1. Check if user is valid
-    // If valid, return data
     const userId = 1;
     const query = await categoriesModel.viewCategory(userId);
 

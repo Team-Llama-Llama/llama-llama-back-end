@@ -25,7 +25,6 @@ const viewModules = async (req, res) => {
     }
 
     // Call model to view modules
-    //PRESTON removed module not found validation to only return query to fix page break issue
     const query = await modulesModel.viewModules(categoryId);
 
     const parsedQuery = query.map((item)=> {
@@ -72,7 +71,6 @@ const addModule = async (req, res) => {
 
     if (query.length > 0) {
       const parsedQuery = camelCaseParser(query[0])
-      console.log(parsedQuery);
       return res
         .status(201)
         .send({ message: "Module successfully added.", data: parsedQuery });
@@ -140,7 +138,6 @@ const deleteModule = async (req, res) => {
         .json({ message: "Module not found or unable to delete." });
     }
   } catch (err) {
-    console.log(err);
     return res.status(500).json({ message: "Internal server error." });
   }
 };
