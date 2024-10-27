@@ -18,7 +18,10 @@ const PORT = process.env.PORT || 3000;
 // Middlewares
 app.use(sessions);
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:5173', 'https://llama-llama-lms-live.onrender.com'],
+  credentials: true
+}));
 app.use(morgan("dev"));
 
 // Public routes
@@ -27,7 +30,7 @@ app.post("/logout", logoutHandler);
 
 // // All the routes after this middleware will be protected.
 // Private routes
-// app.use(authRequired); // [ ] Solve this! Is not working in auth
+app.use(authRequired); // [ ] Solve this! Is not working in auth
 
 // This is for categories
 app.get("/users/:userId/categories", categoriesController.getCategories);
@@ -41,6 +44,11 @@ app.post("/categories/:categoryId/modules", modulesController.addModule); //add 
 app.patch("/modules/:id", modulesController.editModule); //edit a module content, note, or code block component
 app.delete("/modules/:id", modulesController.deleteModule); //delete a module in category
 
+
+app.get("/", (req, res) => {
+  res.send("Hello from homepage")
+});
+
 app.listen(PORT, () => {
-  console.log(`Server listening on port http://${IP}:${PORT}`);
+  console.log(`Server listening on ${PORT}`);
 });

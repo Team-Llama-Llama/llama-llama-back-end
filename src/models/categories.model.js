@@ -15,10 +15,12 @@ class Categories {
 
   // DB includes timestamp if not given
   static addCategory(userId, title) {
-    return knex(CATEGORIES_TABLE).insert({
-      user_id: userId,
-      name: title,
-    });
+    return knex(CATEGORIES_TABLE)
+      .insert({
+        user_id: userId,
+        name: title,
+      })
+      .returning("*");
   }
 
   static editCategory(categoryId, categoryEditted) {

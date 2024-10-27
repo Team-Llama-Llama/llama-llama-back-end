@@ -16,5 +16,9 @@ module.exports = session({
   resave: false,
   saveUninitialized: false,
   store: store,
-  cookie: { secure: false, maxAge: 3600000 },
+  cookie: { 
+    secure: false, 
+    httpOnly: true,
+    maxAge: 3600000 
+  },
 });
