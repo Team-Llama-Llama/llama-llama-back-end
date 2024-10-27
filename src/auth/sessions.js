@@ -18,7 +18,8 @@ module.exports = session({
   store: store,
   cookie: { 
     secure: process.env.NODE_ENV === "production" ? true : false, 
-    httpOnly: false,
+    httpOnly: true,
     maxAge: 3600000,
+    sameSite: "none",
   },
 });

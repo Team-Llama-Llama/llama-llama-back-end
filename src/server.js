@@ -24,6 +24,9 @@ app.use(cors({
 }));
 app.use(morgan("dev"));
 
+//Auth
+app.set("trust proxy", 1);
+
 // Public routes
 app.post("/login", loginHandler);
 app.post("/logout", logoutHandler);
