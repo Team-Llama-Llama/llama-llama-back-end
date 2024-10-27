@@ -21,7 +21,7 @@ class Modules {
       body: "",
       reference_url: referenceUrl,
       solution: "",
-    });
+    }).returning("*")
   }
 
   static editModule(moduleId, moduleEdit) {

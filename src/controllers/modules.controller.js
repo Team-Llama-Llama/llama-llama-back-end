@@ -1,6 +1,19 @@
 const modulesModel = require("../models/modules.model");
 const { validateModule } = require("../utils/validateModule"); // Import the validation function
 
+function camelCaseParser(obj) {
+  return {
+    id: obj.id,
+    categoryId: obj.category_id,
+    title: obj.title,
+    body: obj.body,
+    referenceUrl: obj.reference_url,
+    solution: obj.solution,
+    createdAt: obj.created_at,
+    updatedAt: obj.updated_at,
+  };
+}
+
 // View Modules
 const viewModules = async (req, res) => {
   try {
@@ -14,7 +27,11 @@ const viewModules = async (req, res) => {
     // Call model to view modules
     //PRESTON removed module not found validation to only return query to fix page break issue
     const query = await modulesModel.viewModules(categoryId);
-    return res.status(200).json(query)
+
+    const parsedQuery = query.map((item)=> {
+      return camelCaseParser(item)
+    })
+    return res.status(200).json(parsedQuery)
     // if (query.length > 0) {
     //   return res.status(200).json(query);
     // } else {
@@ -53,10 +70,12 @@ const addModule = async (req, res) => {
     // Call model to add module
     const query = await modulesModel.addModule(categoryId, title, referenceUrl);
 
-    if (query.rowCount === 1) {
+    if (query.length > 0) {
+      const parsedQuery = camelCaseParser(query[0])
+      console.log(parsedQuery);
       return res
         .status(201)
-        .json({ message: "Module successfully added.", data: null });
+        .send({ message: "Module successfully added.", data: parsedQuery });
     } else {
       return res.status(400).json({ message: "Unable to add module." });
     }
@@ -77,13 +96,13 @@ const editModule = async (req, res) => {
     }
 
     // Validate full module object
-    // const validationErrors = validateModule(moduleData);
-    // if (validationErrors.length > 0) {
-    //   return res.status(400).json({
-    //     message: "Object don't have the proper structure",
-    //     errors: validationErrors,
-    //   });
-    // }
+    const validationErrors = validateModule(moduleData);
+    if (validationErrors.length > 0) {
+      return res.status(400).json({
+        message: "Object don't have the proper structure",
+        errors: validationErrors,
+      });
+    }
 
     // Call model to edit module
     const query = await modulesModel.editModule(id, moduleData);
