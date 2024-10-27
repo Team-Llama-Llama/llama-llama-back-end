@@ -20,6 +20,6 @@ module.exports = session({
     secure: process.env.NODE_ENV === "production" ? true : false, 
     httpOnly: true,
     maxAge: 3600000,
-    domain: llama-llama-lms.onrender.com
+    domain: "llama-llama-lms.onrender.com"
   },
 });
