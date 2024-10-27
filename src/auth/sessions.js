@@ -18,8 +18,7 @@ module.exports = session({
   store: store,
   cookie: { 
     secure: process.env.NODE_ENV === "production" ? true : false, 
-    httpOnly: true,
+    httpOnly: false,
     maxAge: 3600000,
-    domain: "llama-llama-lms.onrender.com"
   },
 });
