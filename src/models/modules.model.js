@@ -25,13 +25,18 @@ class Modules {
   }
 
   static editModule(moduleId, moduleEdit) {
-    return knex(MODULES_TABLE).where({ id: moduleId }).update({
-      title: moduleEdit.title,
-      reference_url: moduleEdit.referenceUrl,
-      body: moduleEdit.body,
-      solution: moduleEdit.solution,
-      updated_at: timestamp(),
-    });
+    return knex(MODULES_TABLE)
+      .where({ id: moduleId })
+      .update({
+        title: moduleEdit.title,
+        reference_url: moduleEdit.referenceUrl,
+        body: moduleEdit.body,
+        solution: moduleEdit.solution,
+        updated_at: timestamp(),
+      })
+      .returning("*")
+      .select("*");
+      
   }
 
   static deleteModule(moduleId) {

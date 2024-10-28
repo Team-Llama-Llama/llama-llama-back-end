@@ -25,8 +25,9 @@ class Categories {
 
   static editCategory(categoryId, categoryEditted) {
     return knex(CATEGORIES_TABLE)
+      .select("*")
       .where({ id: categoryId })
-      .update({ name: categoryEditted, updated_at: timestamp() });
+      .update({ name: categoryEditted, updated_at: timestamp() })
   }
 
   static deleteCategory(categoryId) {
