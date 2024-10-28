@@ -19,3 +19,8 @@ Use "npm install"
 
 ## Database installation
 Use "npm run migrate-latest"
+
+## Notes
+- Backend was made using MVC Architecutre.
+- Validation was made using Express.sessions()
+- All endpoints use RESTFUL.
