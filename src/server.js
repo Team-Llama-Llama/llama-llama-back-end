@@ -30,6 +30,7 @@ app.set("trust proxy", 1);
 // Public routes
 app.post("/login", loginHandler);
 app.post("/logout", logoutHandler);
+app.post("/register", usersController.addUser);
 
 // // All the routes after this middleware will be protected.
 // Private routes
