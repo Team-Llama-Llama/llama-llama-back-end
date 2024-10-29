@@ -1,16 +1,28 @@
 const knex = require("../knex.js");
+const bcrypt = require("bcrypt");
 
 const USERS_TABLE = "users";
+
+function hash(password) {
+  const saltRounds = 10;
+  const salt = bcrypt.genSaltSync(saltRounds);
+  return bcrypt.hashSync(password, salt);
+}
 
 class Users {
   constructor() {}
 
   static getUser(username) {
-    return knex("users").where("username", "=", username).first();
+    return knex(USERS_TABLE).where("username", "=", username).first();
   }
 
   static addUser(userData) {
-    return knex.insert(userData).into(USERS_TABLE);
+    console.log(userData);
+    return knex(USERS_TABLE)
+      .insert({
+        username: userData.username,
+        hashed_password: hash(userData.password),
+      })
   }
 }
 
