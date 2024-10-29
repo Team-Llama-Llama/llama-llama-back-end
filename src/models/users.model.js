@@ -17,12 +17,11 @@ class Users {
   }
 
   static addUser(userData) {
-    console.log(userData);
     return knex(USERS_TABLE)
       .insert({
         username: userData.username,
         hashed_password: hash(userData.password),
-      })
+      });
   }
 }
 
