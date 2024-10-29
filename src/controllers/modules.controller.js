@@ -42,7 +42,7 @@ const viewModules = async (req, res) => {
 };
 
 // Add Module
-const addModule = async (req, res) => {
+/*const addModule = async (req, res) => {
   try {
     const { categoryId } = req.params;
     const { title, referenceUrl } = req.body;
@@ -80,7 +80,41 @@ const addModule = async (req, res) => {
   } catch (err) {
     return res.status(500).json({ message: "Internal server error." });
   }
+};*/
+
+//Add Module
+const addModule = async (req, res) => {
+  try {
+    const { categoryId } = req.params;
+    const { title, referenceUrl } = req.body;
+
+    // Manual validation
+    if (!categoryId || isNaN(categoryId)) {
+      return res.status(400).json({ message: "Invalid or missing category ID." });
+    }
+
+    if (!title || typeof title !== "string") {
+      return res.status(400).json({ message: "Title must be given, and must be a string." });
+    }
+
+    if (!referenceUrl || typeof referenceUrl !== "string") {
+      return res.status(400).json({ message: "ReferenceUrl must be given, and must be a string." });
+    }
+
+    // Call model to add module
+    const query = await modulesModel.addModule(categoryId, title, referenceUrl);
+
+    if (query.length > 0) {
+      const parsedQuery = camelCaseParser(query[0]);
+      return res.status(201).json({ message: "Module successfully added.", data: parsedQuery });
+    } else {
+      return res.status(400).json({ message: "Unable to add module." });
+    }
+  } catch (err) {
+    return res.status(500).json({ message: "Internal server error." });
+  }
 };
+
 
 // Edit Module
 const editModule = async (req, res) => {
