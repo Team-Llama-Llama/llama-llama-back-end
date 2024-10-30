@@ -34,7 +34,7 @@ async function loginHandler(req, res, next) {
     const user = await userModel.getUser(username);
 
     if (!user) {
-      return res.status(400).send({ message: "Username not found it." });
+      return res.status(400).send({ message: "Username not found." });
     }
 
     // Validate password
