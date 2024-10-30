@@ -19,8 +19,9 @@ const PORT = process.env.PORT || 3000;
 app.use(sessions);
 app.use(express.json());
 app.use(cors({
-  origin: ['http://localhost:5173', 'https://llama-llama-lms-live.onrender.com'],
-  credentials: true
+  origin: process.env.FRONTEND_URL,
+  optionsSuccessStatus: 200,
+  credentials: true,
 }));
 app.use(morgan("dev"));
 

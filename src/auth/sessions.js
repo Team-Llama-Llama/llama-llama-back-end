@@ -19,7 +19,7 @@ module.exports = session({
   cookie: {
     secure: process.env.NODE_ENV === "production" ? true : false,
     httpOnly: true,
-    //sameSite: "none",
+    sameSite: process.env.NODE_ENV === "production" ? "none" : null,
     maxAge: 3600000,
   },
 });
